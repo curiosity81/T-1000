@@ -28,6 +28,7 @@ Solutions to this problem:
 
 1. Usage of an hardware wallet.
 2. Usage of a second computer in the private LAN only for handling the private keys.
+
 If the first point applies to you, that is you already own an hardware wallet, then you can stop reading here.
 The second point can clearly be a waste of energy, hardware and space, especially, if the second computer does not consist of specific hardware.
 This is where project T-1000 comes into play:
