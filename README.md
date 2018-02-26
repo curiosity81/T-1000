@@ -12,7 +12,7 @@ WARNING: THIS DOCUMENT DOES NOT CLAIM TO BE COMPLETE!!! ONLY STORE IMPORTANT DAT
 
 ## Introduction
 If a person wants to proof its (online) identity without revealing its true identity, modern asymmetric cryptography is essential.
-Messages can simply be signed with the private key derived from a public key associated to the person's (online) identity.
+Messages can simply be signed with the private key whose public key is publicly associated to the person's (online) identity.
 For instance, the person could publish a bitcoin address on the internet, for which it owns the private key.
 Messages signed with the private key can then be verified by others on the internet.
 To create such a signed message via bitcoin core is simple and can be done quickly using bitcoin-qt.
@@ -23,11 +23,11 @@ But this method can be problematic so that the following points are extremly imp
 2. The home folder must be encrypted.
 3. The partition should be encrypted.
 
-However, this does not help, if the wallet was stored on the normal browsing computer, which might be compromised in one way or another.
+However, this does not help, if the wallet was stored in the profile of a normal and the internet browsing user, whose profile or computer might be compromised in one way or another.
 Solutions to this problem:
 
 1. Usage of an hardware wallet.
-2. Usage of a second computer in the private LAN only for handling the private keys.
+2. Usage of a second computer in the private LAN (without internet connection!) only for handling the private keys.
 
 If the first point applies to you, that is you already own an hardware wallet, then you can stop reading here.
 The second point can clearly be a waste of energy, hardware and space, especially, if the second computer does not consist of specific hardware.
@@ -37,7 +37,7 @@ Why using a rasperry pi zero?
 
 0. It is small and has roughly the size of an usb-stick.
 1. It is cheap and only costs around 5$.
-2. It is a real computer and thus, as flexible as possible with respect to software and additional hardware.
+2. It is a stand-alone computer and thus, as flexible as possible with respect to software and additional hardware.
 3. Energy for the device and control over the device are provided via the same usb-connection.
 
 ## Material
@@ -50,11 +50,25 @@ Why using a rasperry pi zero?
 ## Methods
 
 ### Install raspian
+Bla fasel.
 
-### Connecting to raspberry pi zero
+### Connect to raspberry pi zero
+Bla fasel.
 
-### Install bitcoin core
+### Configure raspberry pi zero
+Bla fasel.
+
+### Compile bitcoin core
 http://raspnode.com/diyBitcoin.html
+
+### Change default user
+Bla fasel.
+
+### Install firefall
+Bla fasel.
+
+### Configure wallet
+Bla fasel.
 
 ### Case
 
@@ -91,4 +105,4 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=37324
 https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
 
 ## Conclusion
-Bla fasel
+Bla fasel.
