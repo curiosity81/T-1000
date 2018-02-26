@@ -8,7 +8,7 @@ Build a message signing device so that:
 2. The hard- and software is open source.
 3. The device is as secure as possible.
 
-WARNING: THIS TUTORIAL DOES NOT CLAIM TO BE COMPLETE!!! ONLY STORE IMPORTANT DATA ON THE DEVICE IF YOU KNOW WHAT YOU ARE DOING.
+WARNING: THIS DOCUMENT DOES NOT CLAIM TO BE COMPLETE!!! ONLY STORE IMPORTANT DATA ON THE DEVICE IF YOU KNOW WHAT YOU ARE DOING.
 
 ## Introduction
 If a person wants to proof its (online) identity without revealing its true identity, modern asymmetric cryptography is essential.
@@ -41,9 +41,10 @@ Why using a rasperry pi zero?
 3. Energy for the device and control over the device are provided via the same usb-connection.
 
 ## Material
-1. raspberry pi zero
-2. micro ssd card
-3. usb cable
+0. Ubuntu 16.04.03 LTS
+1. Raspberry pi zero
+2. Micro sd card
+3. Usb cable
 4. 3D-printer (optional)
 
 ## Methods
@@ -54,6 +55,35 @@ Why using a rasperry pi zero?
 
 ### Install bitcoin core
 http://raspnode.com/diyBitcoin.html
+
+### Case
+
+Download the 3D-model for the case [here](https://www.thingiverse.com/thing:1436545).
+You can use the original model, but then the sd card can be removed from the device easily.
+An improved version can be derived using the 3D-modeling software [OpenScad](http://www.openscad.org/) (sudo apt-get install openscad) as follows.
+Firstly, change the PiCase-Cover model and save the result in a new file:
+```
+import("/<path_to_model>/Raspberry_Pi_Zero_Keychain_Case/files/PiCase-Cover.stl", convexity=3);
+
+translate([-36.5,-16.5,-4.75]){
+    cube([2.5,33,1.5]);
+}
+```
+Secondly, change the PiCase model and save the result in a new file:
+```
+import("/<path_to_model>/Raspberry_Pi_Zero_Keychain_Case/files/PiCase.stl", convexity=3);
+
+translate([-36.5,-16.5,-3.25]){
+    difference(){
+        cube([2.5,33,6.5]);
+        translate([1.25,11.9,3]){
+            cube([2,13,10]);
+        }
+    }
+}
+```
+The code above will work if the downloaded 3D-model is still available and was not changed in the meantime.
+Print the case.
 
 ### Misc
 (https://www.raspberrypi.org/documentation/configuration/security.md)
