@@ -15,7 +15,7 @@ If a person wants to proof its (online) identity without revealing its true iden
 Messages can simply be signed with the private key derived from a public key associated to the person's (online) identity.
 For instance, the person could publish a bitcoin address on the internet, for which it owns the private key.
 Messages signed with the private key can then be verified by others on the internet.
-To create a message via bitcoin core is simple and can be done quickly using bitcoin-qt.
+To create such a signed message via bitcoin core is simple and can be done quickly using bitcoin-qt.
 In this case, the private key is stored in the wallet.dat file.
 But this method can be problematic so that the following points are extremly important:
 
