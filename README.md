@@ -64,7 +64,7 @@ http://raspnode.com/diyBitcoin.html
 ### Change default user
 Bla fasel.
 
-### Install firefall
+### Install firewall
 Bla fasel.
 
 ### Configure wallet
