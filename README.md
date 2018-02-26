@@ -2,6 +2,7 @@
 
 ## Aim
 Build a message signing device so that:
+
 0. The device fits into a pocket.
 1. The total cost is around 1000 cent.
 2. The hard- and software is open source.
@@ -17,11 +18,14 @@ Messages signed with the private key can then be verified by others on the inter
 To create a message via bitcoin core is simple and can be done quickly using bitcoin-qt.
 In this case, the private key is stored in the wallet.dat file.
 But this method can be problematic so that the following points are extremly important:
+
 1. The wallet MUST be encrypted.
 2. The home folder must be encrypted.
 3. The partition should be encrypted.
+
 However, this does not help, if the wallet was stored on the normal browsing computer, which might be compromised in one way or another.
 Solutions to this problem:
+
 1. Usage of an hardware wallet.
 2. Usage of a second computer in the private LAN only for handling the private keys.
 If the first point applies to you, that is you already own an hardware wallet, then you can stop reading here.
@@ -29,6 +33,7 @@ The second point can clearly be a waste of energy, hardware and space, especiall
 This is where project T-1000 comes into play:
 Project T-1000 stands for "project Trezer0-1000", a simple open source and raspberry pi zero based Trezor alternative, small enough to fit into a pocket.
 Why using a rasperry pi zero?
+
 0. It is small and has roughly the size of an usb-stick.
 1. It is cheap and only costs around 5$.
 2. It is a real computer and thus, as flexible as possible with respect to software and additional hardware.
