@@ -49,8 +49,73 @@ Why using a rasperry pi zero?
 
 ## Methods
 
-### Install raspian
-Bla fasel.
+### Install Raspbian
+Enter the Download directory:
+```
+cd /home/<user>/Downloads
+```
+Download the current version of [Raspbian](https://www.raspberrypi.org/downloads/raspbian/):
+```
+wget https://downloads.raspberrypi.org/raspbian_latest
+```
+This will save a file with the name "raspbian_latest", which represents a zip archive.
+Rename it:
+```
+mv raspbian_latest raspbian_latest.zip
+```
+Unzip it:
+```
+unzip raspbian_latest.zip
+```
+Now insert the micro sd card into your computer, e.g. by means of a mirco sd card adapter.
+Check via gparted (sudo apt-get install gparted) which device name the sd card has:
+```
+gparted
+```
+BE CAREFUL AND DO NOT MIX THE PARTITIONS, IN THE WORST CASE YOU INSTALL RASPBIAN ON YOUR MAIN PARTITION!
+If you have identified the correct device (something like /dev/sdb or /dev/sdc), write the Raspbian image to the sd card:
+```
+sudo dd if=2017-11-29-raspbian-stretch.img of=/dev/<the_identified_device>
+``` 
+Then remove the sd card from the computer and insert it again.
+Two new file systems should automatically pop up.
+```
+cd /media/<user>/boot
+```
+Do the [following](https://www.thepolyglotdeveloper.com/2016/06/connect-raspberry-pi-zero-usb-cable-ssh/):
+```
+sudo touch ssh
+```
+And
+```
+sudo nano config.txt
+```
+Add the following line at the bottom of the file:
+```
+dtoverlay=dwc2
+```
+Exit nano via Ctrl+x and press y for accepting the changes.
+```
+sudo nano cmdline.txt
+```
+Find "rootwait" in the file and add
+```
+modules-load=dwc2,g_ether
+```
+directly behind it, delimited with exactly one space, but make sure to also keep the other stuff.
+The result should look as follows:
+```
+... rootwait modules-load=dwc2,g_ether quiet ...
+```
+Exit nano via Ctrl+x and press y for accepting the changes.
+Leave the current directory:
+```
+cd /home/<user>/Downloads
+```
+Unmount the two file systems on the sd card by right clicking on the corresponding symbols on the unity bar on the left by selecting "Unmount".
+Insert the sd card into the raspberry pi zero.
+Insert the usb-cable into the micro usb port of the pi, which is closest to the middle.
+The device is now ready for its first boot up.
 
 ### Connect to raspberry pi zero
 Bla fasel.
