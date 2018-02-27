@@ -67,12 +67,17 @@ Unzip it:
 ```
 unzip raspbian_latest.zip
 ```
+Test the sha256-hash of the file:
+```
+sha256sum raspbian_latest.zip | grep -o 64c4103316efe2a85fd2814f2af16313abac7d4ad68e3d95ae6709e2e894cc1b
+```
 Now insert the micro sd card into your computer, e.g. by means of a mirco sd card adapter.
 Check via gparted (sudo apt-get install gparted) which device name the sd card has:
 ```
-gparted
+sudo gparted
 ```
 BE CAREFUL AND DO NOT MIX THE PARTITIONS, IN THE WORST CASE YOU INSTALL RASPBIAN ON YOUR MAIN PARTITION!
+Close gparted.
 If you have identified the correct device (something like /dev/sdb or /dev/sdc), write the Raspbian image to the sd card:
 ```
 sudo dd if=2017-11-29-raspbian-stretch.img of=/dev/<the_identified_device>
