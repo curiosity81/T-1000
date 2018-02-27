@@ -129,8 +129,10 @@ Some of the shown information will double there, but not in a reasoned way (a ki
 Since there is no configured connection to the raspberry pi zero yet, let's create one:
 Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings".
 Now, there are two possible configurations under "Method":
+
 1. "Link-Local Only"
 2. "Shared to other computers"
+
 If the device is not allowed to have an internet connection, then select the first possibility (you will be still able to access the device via ssh).
 However, since Raspbian should be updated and additional software needs to be downloaded, we select the second possibility.
 Click "Save" and "Close" and Ubuntu will do the rest.
