@@ -82,7 +82,9 @@ Check via gparted (sudo apt-get install gparted) which device name the sd card h
 ```
 sudo gparted
 ```
+
 BE CAREFUL AND DO NOT MIX THE PARTITIONS, IN THE WORST CASE YOU INSTALL RASPBIAN ON YOUR MAIN PARTITION!
+
 Close gparted.
 If you have identified the correct device (something like /dev/sdb or /dev/sdc), write the Raspbian image to the sd card:
 ```
@@ -133,7 +135,7 @@ Plug the device into an usb-port of your computer and wait around two minutes.
 Do a right click on the network manager (right top, close to, where the unity windows manager shows the time: the icon with one arrow up and one arrow down if you are connected to the internet).
 Some of the shown information will double there, but not in a reasoned way (a kind of ms-windows behavior ...).
 Since there is no configured connection to the raspberry pi zero yet, let's create one:
-Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings".
+Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings" (you can also give the new connection a meaningful name).
 Now, there are two possible configurations under "Method" we will use:
 
 1. "Link-Local Only"
@@ -152,9 +154,10 @@ Now connect to the device via ssh:
 ```
 ssh pi@raspberrypi.local
 ```
-Password is by default "raspberry".
-Note, that Ubuntu seems to have problems to select the correct ethernet connection after reboot.
-Best strategy: delete an old raspberry pi zero connection before you insert the device into the usb-port of your computer and then follow the steps of this paragraph from the beginning.
+Password is "raspberry" by default.
+Note, that Ubuntu seems to have problems to select the correct ethernet connection after its reboot.
+That is, Ubuntu mixes up the internet connection with the newly created raspberry pi zero connection.  
+Therefore, delete an old raspberry pi zero connection before you insert the device into the usb-port of your computer and then follow the steps of this paragraph from the beginning.
 
 ### Configure raspberry pi zero
 After logging into the device, do:
@@ -175,7 +178,7 @@ Then reboot:
 ```
 sudo shutdown -r now
 ```
-After reboot update Raspbian (for logging into the device again, see the end of paragraph "Connect to raspberry pi zero"):
+After reboot update Raspbian (if there are problems with logging into the device again, see the end of paragraph "Connect to raspberry pi zero"):
 ```
 sudo apt-get update
 ```
