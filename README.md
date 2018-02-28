@@ -58,18 +58,23 @@ Download the current version of [Raspbian](https://www.raspberrypi.org/downloads
 ```
 wget https://downloads.raspberrypi.org/raspbian_latest
 ```
-This will save a file with the name "raspbian_latest", which represents a zip archive.
+This will save a file with the name "raspbian_latest", which represents a zip-archive.
 Rename it:
 ```
 mv raspbian_latest raspbian_latest.zip
+```
+Test the sha256-hash of the zip-archive:
+```
+sha256sum raspbian_latest.zip | grep -o 64c4103316efe2a85fd2814f2af16313abac7d4ad68e3d95ae6709e2e894cc1b
+If grep returns the hash, everything is fine.
 ```
 Unzip it:
 ```
 unzip raspbian_latest.zip
 ```
-Test the sha256-hash of the file:
+The current Raspbian image will be unzipped in the Downloads-directory, e.g:
 ```
-sha256sum raspbian_latest.zip | grep -o 64c4103316efe2a85fd2814f2af16313abac7d4ad68e3d95ae6709e2e894cc1b
+2017-11-29-raspbian-stretch.img
 ```
 Now insert the micro sd card into your computer, e.g. by means of a mirco sd card adapter.
 Check via gparted (sudo apt-get install gparted) which device name the sd card has:
@@ -150,7 +155,33 @@ Note, that Ubuntu seems to have problems to select the correct ethernet connecti
 Best strategy: delete an old raspberry pi zero connection before you insert the device into the usb-port of your computer and then follow the steps of this paragraph from the beginning.
 
 ### Configure raspberry pi zero
-Bla fasel.
+After logging into the device, do:
+```
+sudo raspi-config
+```
+You can browse the [raspi-confi](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) menu via arrow, tab and return key.
+Choose "Expand file system" so that the device will use all of the sd card's memory.
+This change will apply after reboot.
+Also set the "Localisation options":
+
+1. Set "Change local" to, e.g., "en_GB.UTF-8 UTF-8".
+2. Set the "Time zone" to the time zone where you are living in.
+3. If you use a specific keyboard, also adapt "Change keyboard layout" correspondingly.
+
+Finish the tool.
+Then reboot:
+```
+sudo shutdown -r now
+```
+After reboot update Raspbian (for logging into the device again, see the end of paragraph "Connect to raspberry pi zero"):
+```
+sudo apt-get update
+```
+Followed by
+```
+sudo apt-get dist-upgrade
+```
+This will take some time.
 
 ### Compile bitcoin core
 http://raspnode.com/diyBitcoin.html
