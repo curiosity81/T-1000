@@ -8,7 +8,8 @@ Build a message signing device so that:
 2. The hard- and software is open source.
 3. The device is as secure as possible.
 
-WARNING: THIS DOCUMENT DOES NOT CLAIM TO BE COMPLETE!!! ONLY STORE IMPORTANT DATA ON THE DEVICE IF YOU KNOW WHAT YOU ARE DOING.
+## WARNING
+THIS DOCUMENT DOES NOT CLAIM TO BE COMPLETE!!! THIS IS ONLY A PROOF OF CONCEPT. ONLY STORE IMPORTANT DATA ON THE DEVICE IF YOU KNOW WHAT YOU ARE DOING.
 
 ## Introduction
 If a person wants to proof its (online) identity without revealing its true identity, modern asymmetric cryptography is essential.
