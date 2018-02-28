@@ -73,7 +73,7 @@ Unzip it:
 ```
 unzip raspbian_latest.zip
 ```
-The current Raspbian image will be unzipped in the Downloads-directory, e.g:
+The current Raspbian image will be unzipped in the Downloads-directory and should look similar to:
 ```
 2017-11-29-raspbian-stretch.img
 ```
@@ -170,7 +170,7 @@ This change will apply after reboot.
 Also set the "Localisation options":
 
 1. Set "Change local" to, e.g., "en_GB.UTF-8 UTF-8".
-2. Set the "Time zone" to the time zone where you are living in.
+2. Set "Time zone" to the time zone where you are living in.
 3. If you use a specific keyboard, also adapt "Change keyboard layout" correspondingly.
 
 Finish the tool.
