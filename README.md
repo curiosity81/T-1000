@@ -134,12 +134,13 @@ Do a right click on the network manager (right top, close to, where the unity wi
 Some of the shown information will double there, but not in a reasoned way (a kind of ms-windows behavior ...).
 Since there is no configured connection to the raspberry pi zero yet, let's create one:
 Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings".
-Now, there are two possible configurations under "Method":
+Now, there are two possible configurations under "Method" we will use:
 
 1. "Link-Local Only"
 2. "Shared to other computers"
 
 If the device is not allowed to have an internet connection, then select the first possibility (you will be still able to access the device via ssh).
+This configuration is used later on, when the device is readily installed and configured.
 However, since Raspbian should be updated and additional software needs to be downloaded, we select the second possibility.
 Click "Save" and "Close" and Ubuntu will do the rest.
 In a terminal check:
@@ -182,7 +183,7 @@ Followed by
 ```
 sudo apt-get dist-upgrade
 ```
-This will take some time.
+The upgrade procedure will now take some time, grab a coffee, a beer or a glass of wine and do something else in the meantime.
 
 ### Compile bitcoin core
 http://raspnode.com/diyBitcoin.html
