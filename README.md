@@ -164,7 +164,7 @@ After logging into the device, do:
 ```
 sudo raspi-config
 ```
-You can browse the [raspi-confi](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) menu via arrow, tab and return key.
+You can browse the [raspi-confi](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) menu via arrow, tab and return keys.
 Choose "Expand file system" so that the device will use all of the sd card's memory.
 This change will apply after reboot.
 Also set the "Localisation options":
