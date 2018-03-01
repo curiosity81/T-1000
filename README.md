@@ -46,7 +46,8 @@ Why using a rasperry pi zero?
 1. Raspberry pi zero
 2. Micro sd card
 3. Usb cable
-4. 3D-printer (optional)
+4. Time
+5. 3D-printer (optional)
 
 ## Methods
 
@@ -189,7 +190,74 @@ sudo apt-get dist-upgrade
 The upgrade procedure will now take some time, grab a coffee, a beer or a glass of wine and do something else in the meantime.
 
 ### Compile bitcoin core
-http://raspnode.com/diyBitcoin.html
+Firstly, make sure, which cpu is running the device:
+```
+cat /proc/cpuinfo
+```
+My raspberry pi zero is run by an "ARMv6-compatible processor rev 7 (v6l)" so that the bitcoin core binaries won't work.
+Thus, we have to [compile](http://raspnode.com/diyBitcoin.html) the software by ourselves.
+Secondly, we need much more memory, than the 512 MB the device provides since otherwise compiling will take forever:
+```
+sudo nano /etc/dphys-swapfile
+```
+Change the default size of 100 to the maximum number of 2048:
+```
+CONF_SWAPSIZE=2048
+```
+Save and exit nano via Ctrl+x and press y for accepting the changes.
+Then run:
+```
+sudo dphys-swapfile setup
+sudo dphys-swapfile swapon
+```
+Reboot:
+```
+sudo shutdown -r now
+```
+And after relogin check the swap:
+```
+top
+``` 
+Exit top via Ctrl+c.
+Thirdly, we need additional packages:
+```
+sudo apt-get install autoconf libevent-dev libtool libssl-dev libboost-all-dev libminiupnpc-dev git t4-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev
+```
+Fourthly, we need Berkeley-DB 4.8, so we have to compile this too:
+```
+cd /home/pi/Downloads
+wget wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+echo "12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef db-4.8.30.NC.tar.gz" | sha256sum -c
+tar -xzvf db-4.8.30.NC.tar.gz
+cd db-4.8.30.NC
+cd build_unix
+../dist/configure --enable-cxx
+make
+```
+This will take some time but should finish in less than one or two hours.
+```
+sudo make install
+```
+If you do not want to install Berkley-DB system-wide see [this](https://forum.feathercoin.com/topic/8168/building-feathercoin/4) as an alternative way of building *coin core. 
+Now we are ready for bitcoin core:
+```
+cd /home/pi/Downloads
+git clone https://github.com/bitcoin/bitcoin.git
+```
+This is a current snapshot of the bitcoin core code.
+You can also specify the branch for cloning via "-b":
+```
+git clone -b 0.15 https://github.com/bitcoin/bitcoin.git
+```
+Finally, build bitcoin core:
+```
+cd bitcoin
+./autogen.sh
+./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --enable-upnp-default --with-gui
+make
+``` 
+Building bitcoin core on a single cpu device with 1 GHz, 512 MB ram and 2048 MB swap will take ages.
+But you can always stop compilation via Ctrl+c since after shutdown and reboot you can resume compilation via "make". 
 
 ### Change default user
 Bla fasel.
