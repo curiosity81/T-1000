@@ -273,6 +273,7 @@ You only need to provide a password, the other information can be left empty.
 Also add this user to the sudoers group:
 ```
 sudo adduser t1000 sudo
+```
 Now install encrypt-fs:
 ```
 sudo apt-get install ecryptfs-utils
