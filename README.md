@@ -262,8 +262,9 @@ Building bitcoin core on a single cpu device with 1 GHz, 512 MB ram and 2048 MB 
 But you can always stop compilation via Ctrl+c since after shutdown and reboot you can resume compilation via "make". 
 The bitcoin directory will be copied or moved to the home of a new user, which we will create in the next section.
 The bitcoin binaries can then be accessed locally.
+We will also install ecryptfs in the next section so that this directory is safe from modification with respect to the bitcoin core binaries as well as the wallet.dat file.
 
-### Change default user
+### Create new default user and encrypt its home folder 
 Create a new user as follows:
 ```
 sudo adduser t1000
@@ -274,9 +275,9 @@ Also add this user to the sudoers group:
 ```
 sudo adduser t1000 sudo
 ```
-Now install encrypt-fs:
+Now install ecryptfs and lsof:
 ```
-sudo apt-get install ecryptfs-utils
+sudo apt-get install ecryptfs-utils lsof
 sudo modprobe ecryptfs
 ```
 To make this permanent, do:
@@ -292,6 +293,7 @@ Now encrypt the home of user t1000 but make sure, that user t1000 is not logged 
 ```
 sudo ecryptfs-migrate-home -u t1000
 ```
+Save the output of this command in some file for potential later use.
 Log out from the device:
 ```
 exit
@@ -319,6 +321,11 @@ You can always unlock the pi user via:
 sudo usermod -U -e 99999 pi
 ```
 From now on, it won't be possible to become the user pi or to log into the device as the user pi.
+Copy the whole Download folder from the pi user to t1000's home folder:
+```
+cp /home/pi/Downloads /home/t1000 -Rf
+```
+Also note, that ecryptfs will further slow down the device.
 
 ### Install firewall
 Bla fasel.
