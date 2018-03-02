@@ -284,7 +284,7 @@ To make this permanent, do:
 ```
 sudo nano /etc/modules-load.d/modules.conf
 ```
-and add the line
+Add the line
 ```
 ecryptfs
 ```
