@@ -304,14 +304,12 @@ Now reboot:
 ```
 sudo shutdown -r now
 ```
-And log in again as user t1000.
+Log in again as user t1000.
 To test wether sudo will work, do:
 ```
 sudo visudo
 ```
 Exit the program via Ctrl+c.
-If you have chosen
-
 Finally lock the pi user:
 ```
 sudo usermod -L -e 1 pi
