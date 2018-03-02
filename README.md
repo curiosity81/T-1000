@@ -260,11 +260,8 @@ make
 ``` 
 Building bitcoin core on a single cpu device with 1 GHz, 512 MB ram and 2048 MB swap will take ages.
 But you can always stop compilation via Ctrl+c since after shutdown and reboot you can resume compilation via "make". 
-For simplicity, similar to Berkley-DB, we install bitcoin core system-wide:
-```
-sudo make install
-```
-Again, this will take some time.
+The bitcoin directory will be copied or moved to the home of a new user, which we will create in the next section.
+The bitcoin binaries can then be accessed locally.
 
 ### Change default user
 Create a new user as follows:
@@ -276,6 +273,23 @@ You only need to provide a password, the other information can be left empty.
 Also add this user to the sudoers group:
 ```
 sudo adduser t1000 sudo
+Now install encrypt-fs:
+```
+sudo apt-get install ecryptfs-utils
+sudo modprobe ecryptfs
+```
+To make this permanent, do:
+```
+sudo nano /etc/modules-load.d/modules.conf
+```
+and add the line
+```
+ecryptfs
+```
+Exit nano via Ctrl+x and press y for accepting the change.
+Now encrypt the home of user t1000 but make sure, that user t1000 is not logged in:
+```
+sudo ecryptfs-migrate-home -u t1000
 ```
 Log out from the device:
 ```
@@ -285,11 +299,18 @@ And log in again as user t1000 with the corresponding password:
 ```
 ssh t1000@raspberrypi.local
 ```
+Now reboot:
+```
+sudo shutdown -r now
+```
+And log in again as user t1000.
 To test wether sudo will work, do:
 ```
 sudo visudo
 ```
 Exit the program via Ctrl+c.
+If you have chosen
+
 Finally lock the pi user:
 ```
 sudo usermod -L -e 1 pi
