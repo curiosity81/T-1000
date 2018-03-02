@@ -100,7 +100,8 @@ Do the [following](https://www.thepolyglotdeveloper.com/2016/06/connect-raspberr
 ```
 sudo touch ssh
 ```
-And
+This creates the file "ssh" in the boot directory, which will tell Raspbian to accept ssh connections.
+Then edit config.txt in the same directory:
 ```
 sudo nano config.txt
 ```
@@ -109,6 +110,7 @@ Add the following line at the bottom of the file:
 dtoverlay=dwc2
 ```
 Exit nano via Ctrl+x and press y for accepting the changes.
+Also edit cmdline.txt:
 ```
 sudo nano cmdline.txt
 ```
@@ -258,9 +260,45 @@ make
 ``` 
 Building bitcoin core on a single cpu device with 1 GHz, 512 MB ram and 2048 MB swap will take ages.
 But you can always stop compilation via Ctrl+c since after shutdown and reboot you can resume compilation via "make". 
+For simplicity, similar to Berkley-DB, we install bitcoin core system-wide:
+```
+sudo make install
+```
+Again, this will take some time.
 
 ### Change default user
-Bla fasel.
+Create a new user as follows:
+```
+sudo adduser t1000
+
+```
+You only need to provide a password, the other information can be left empty.
+Also add this user to the sudoers group:
+```
+sudo adduser t1000 sudo
+```
+Log out from the device:
+```
+exit
+```
+And log in again as user t1000 with the corresponding password:
+```
+ssh t1000@raspberrypi.local
+```
+To test wether sudo will work, do:
+```
+sudo visudo
+```
+Exit the program via Ctrl+c.
+Finally lock the pi user:
+```
+sudo usermod -L -e 1 pi
+```
+You can always unlock the pi user via:
+```
+sudo usermod -U -e 99999 pi
+```
+From now on, it won't be possible to become the user pi or to log into the device as the user pi.
 
 ### Install firewall
 Bla fasel.
