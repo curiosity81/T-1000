@@ -395,7 +395,7 @@ Start bitcoind:
 /home/t1000/Downloads/bitcoin/src/bitcoind &
 ```
 We do not want, that the following commands go into the history.
-Therefore ignore commands, which start with a space:
+Therefore the command line must be forced to ignore commands, which start with a space:
 ```
 export HISTCONTROL=ignorespace
 ```
