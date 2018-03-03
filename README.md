@@ -68,6 +68,7 @@ mv raspbian_latest raspbian_latest.zip
 Test the sha256-hash of the zip-archive:
 ```
 sha256sum raspbian_latest.zip | grep -o 64c4103316efe2a85fd2814f2af16313abac7d4ad68e3d95ae6709e2e894cc1b
+```
 If grep returns the hash, everything is fine.
 ```
 Unzip it:
