@@ -435,7 +435,7 @@ Create a bin folder in t1000's home:
 ```
 mkdir /home/t1000/bin
 ```
-Then create the file signmessage.sh:
+Firstly, create the file signmessage.sh:
 ```
 nano /home/t1000/bin/signmessage.sh
 ```
@@ -483,7 +483,7 @@ hello world
 ICEfpWSTZsmlqW38kZTaYuhub4jY+V9K9Dsv13LSEk5EFLWfbKr3zQtpgxL22kSEiXKQRp+Mb/rINtzFsBMXGVo=
 ------END BITCOIN SIGNED MESSAGE------
 ```
-Create a second file:
+Secondly, create the file verifymessage.sh:
 ```
 nano /home/t1000/bin/verifymessage.sh
 ```
@@ -512,6 +512,32 @@ Which returns in my case:
 true
 ```
 Those two scripts are supposed to be accessed via ssh from the users desktop computer.
+Log out:
+```
+exit
+```
+Thirdly, create the file t1000.sh on your desktop computer, for instance:
+```
+mkdir /home/<user>/bin
+nano /home/<user>/bin/t1000.sh
+```
+Fill the file with the following code:
+```
+#!/bin/bash
+echo -n "walletpassphrase: "
+read -s walletpassphrase
+echo
+ssh t1000@raspberrypi.local "bin/signmessage.sh '$walletpassphrase' '$1' '$2'"
+```
+Change the permissions again:
+```
+chmod 700 /home/<user>/bin/t1000.sh
+```
+You can now sign messages from you desktop computer via:
+```
+/home/<user>/bin/t1000.sh "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
+```
+Note, that this command will again take its time due to the light hardware of the raspberry pi zero combined with bitcoin core and ecryptfs.
 
 ### Case
 
@@ -548,4 +574,4 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=37324
 https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
 
 ## Conclusion
-Bla fasel.
+Bla fasel
