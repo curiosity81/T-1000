@@ -387,9 +387,45 @@ Select the default location for the wallet and blockchain, which is:
 ```
 /home/t1000/.bitcoin
 ```
+Close the GUI.
 
 ### Configure wallet
-Bla fasel.
+Start bitcoind:
+```
+/home/t1000/Downloads/bitcoin/src/bitcoind &
+```
+We do not want, that the following commands go into the history.
+Therefore ignore commands, which start with a space:
+```
+export HISTCONTROL=ignorespace
+```
+Make this permanent by adding this line to /home/t1000/.bashrc:
+```
+nano /home/t1000/.bashrc
+```
+Exit nano via Ctrl+x and press y for accepting the change.
+You can check your environment variables after reboot via:
+```
+env | grep HISTCONTROL
+```
+Then encrypt your wallet:
+```
+ /home/t1000/Downloads/bitcoin/src/bitcoin-cli encryptwallet "<passphrase>"
+```
+Make sure, that there is a space in front of this command!
+We do not want to save the wallet passphrase in the history.
+Restart the server:
+```
+/home/t1000/Downloads/bitcoin/src/bitcoind &
+```
+And create a new address for signing messages:
+```
+/home/t1000/Downloads/bitcoin/src/bitcoin-cli getnewaddress "" "legacy"
+```
+Messages signed with the private key associated to this address will now serve as proof of identity.
+
+### Scripts for creating signatures
+Bla fasel
 
 ### Case
 
