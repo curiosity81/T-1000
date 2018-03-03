@@ -398,7 +398,7 @@ Therefore the command line must be forced to ignore commands, which start with a
 ```
 export HISTCONTROL=ignorespace
 ```
-Make this permanent by adding this line to /home/t1000/.bashrc:
+Make this permanent by adding line from above to /home/t1000/.bashrc:
 ```
 nano /home/t1000/.bashrc
 ```
