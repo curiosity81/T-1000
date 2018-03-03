@@ -408,6 +408,7 @@ You can check your environment variables after reboot via:
 ```
 env | grep HISTCONTROL
 ```
+If you forget the space, you can always remove the passphrase from history via editing /home/t1000/.bash_history.
 Then encrypt your wallet:
 ```
  /home/t1000/Downloads/bitcoin/src/bitcoin-cli encryptwallet "<passphrase>"
@@ -422,10 +423,95 @@ And create a new address for signing messages:
 ```
 /home/t1000/Downloads/bitcoin/src/bitcoin-cli getnewaddress "" "legacy"
 ```
+For instance in my case, bitcoind returned:
+```
+1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP
+```
 Messages signed with the private key associated to this address will now serve as proof of identity.
+Clearly, you can also import private keys from other wallet and use those for identity proof.
 
 ### Scripts for creating signatures
-Bla fasel
+Create a bin folder in t1000's home:
+```
+mkdir /home/t1000/bin
+```
+Then create the file signmessage.sh:
+```
+nano /home/t1000/bin/signmessage.sh
+```
+And fill the file with the following code:
+```
+#!/bin/bash
+
+# start bitcoind and wait five seconds
+/home/t1000/Downloads/bitcoin/src/bitcoind & 
+sleep 5;
+
+# unlock the wallet for one second
+/home/t1000/Downloads/bitcoin/src/bitcoin-cli walletpassphrase "$1" 1;
+
+# sign a message and wait two seconds
+signature=$(/home/t1000/Downloads/bitcoin/src/bitcoin-cli signmessage "$2" "$3");
+sleep 2;
+
+# stop bitcoind
+/home/t1000/Downloads/bitcoin/src/bitcoin-cli stop &> /dev/null;
+
+# print signed message
+echo "-----BEGIN BITCOIN SIGNED MESSAGE-----";
+echo "$3";
+echo "-----------BEGIN SIGNATURE------------";
+echo "$2";
+echo "$signature";
+echo "------END BITCOIN SIGNED MESSAGE------";
+```
+Change the permissions of this file:
+```
+chmod 700 /home/t1000/bin/signmessage.sh
+```
+Test the script as follows:
+```
+ /home/t1000/bin/signmessage.sh "<wallet_passphrase>" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
+```
+Again make sure, that the command begins with a space!
+In my case, the script returns after around thirty seconds with:
+```
+-----BEGIN BITCOIN SIGNED MESSAGE-----
+hello world
+-----------BEGIN SIGNATURE------------
+1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP
+ICEfpWSTZsmlqW38kZTaYuhub4jY+V9K9Dsv13LSEk5EFLWfbKr3zQtpgxL22kSEiXKQRp+Mb/rINtzFsBMXGVo=
+------END BITCOIN SIGNED MESSAGE------
+```
+Create a second file:
+```
+nano /home/t1000/bin/verifymessage.sh
+```
+And fill the file with the following code:
+```
+#!/bin/bash
+
+# start bitcoind and wait five seconds
+/home/t1000/Downloads/bitcoin/src/bitcoind & 
+sleep 5;
+
+# verify message and stop bitcoind
+/home/t1000/Downloads/bitcoin/src/bitcoin-cli verifymessage "$1" "$2" "$3";
+/home/t1000/Downloads/bitcoin/src/bitcoin-cli stop &> /dev/null;
+```
+Change the permissions of this file:
+```
+chmod 700 /home/t1000/bin/verifymessage.sh
+```
+You can now also verify a message as follows:
+```
+/home/t1000/bin/verifymessage.sh "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "ICEfpWSTZsmlqW38kZTaYuhub4jY+V9K9Dsv13LSEk5EFLWfbKr3zQtpgxL22kSEiXKQRp+Mb/rINtzFsBMXGVo=" "hello world"
+```
+Which returns in my case:
+```
+true
+```
+Those two scripts are supposed to be accessed via ssh from the users desktop computer.
 
 ### Case
 
