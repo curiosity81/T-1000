@@ -471,7 +471,7 @@ chmod 700 /home/t1000/bin/signmessage.sh
 ```
 Test the script as follows:
 ```
- /home/t1000/bin/signmessage.sh "<wallet_passphrase>" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
+ /home/t1000/bin/signmessage.sh "<walletpassphrase>" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
 ```
 Again make sure, that the command begins with a space!
 In my case, the script returns after around thirty seconds with:
@@ -524,20 +524,41 @@ nano /home/<user>/bin/t1000.sh
 Fill the file with the following code:
 ```
 #!/bin/bash
-echo -n "walletpassphrase: "
-read -s walletpassphrase
-echo
-ssh t1000@raspberrypi.local "bin/signmessage.sh '$walletpassphrase' '$1' '$2'"
+if [[ "$1" == "sign" ]];
+then
+   echo -n "walletpassphrase: "
+   read -s walletpassphrase
+   echo
+   ssh t1000@raspberrypi.local "/home/t1000/bin/signmessage.sh '$walletpassphrase' '$2' '$3'"
+fi
+
+if [[ "$1" == "verify" ]];
+then
+   ssh t1000@raspberrypi.local "/home/t1000/bin/verifymessage.sh '$2' '$3' '$4'"
+fi
+
+if [[ "$1" == "shutdown" ]];
+then
+   ssh -t t1000@raspberrypi.local "sudo shutdown -h now"
+fi
 ```
 Change the permissions again:
 ```
 chmod 700 /home/<user>/bin/t1000.sh
 ```
-You can now sign messages from you desktop computer via:
+You can now sign messages from your desktop computer via:
 ```
-/home/<user>/bin/t1000.sh "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
+/home/<user>/bin/t1000.sh "sign" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
 ```
-Note, that this command will again take its time due to the light hardware of the raspberry pi zero combined with bitcoin core and ecryptfs.
+You can verify message from your desktop computer via:
+```
+/home/<user>/bin/t1000.sh "verify" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "ICEfpWSTZsmlqW38kZTaYuhub4jY+V9K9Dsv13LSEk5EFLWfbKr3zQtpgxL22kSEiXKQRp+Mb/rINtzFsBMXGVo=" "hello world"
+```
+And you can cleanly shutdown the device from you desktop computer via:
+```
+/home/<user>/bin/t1000.sh "shutdown"
+```
+Note, that this commands will again take their time due to the light hardware of the raspberry pi zero combined with bitcoin core and ecryptfs.
 
 ### Case
 
