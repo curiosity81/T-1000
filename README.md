@@ -335,7 +335,7 @@ If you configured ufw wrongly, and if you are not able to log into the device ag
 ```
 sudo nano /media/<user>/rootfs/etc/ufw/ufw.conf
 ```
-And change the line which controls ufw to:
+Change the line which controls ufw to:
 ```
 ENABLED=no
 ```
