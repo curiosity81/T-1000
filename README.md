@@ -408,7 +408,7 @@ You can check your environment variables after reboot via:
 env | grep HISTCONTROL
 ```
 If you forget the space, you can always remove the passphrase from history via editing /home/t1000/.bash_history.
-Then encrypt your wallet:
+Now encrypt your wallet:
 ```
  /home/t1000/Downloads/bitcoin/src/bitcoin-cli encryptwallet "<passphrase>"
 ```
