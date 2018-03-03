@@ -558,7 +558,7 @@ And you can cleanly shutdown the device from you desktop computer via:
 ```
 /home/<user>/bin/t1000.sh "shutdown"
 ```
-Note, that this commands will again take their time due to the light hardware of the raspberry pi zero combined with bitcoin core and ecryptfs.
+Note, that these commands will again take their time due to the light hardware of the raspberry pi zero combined with bitcoin core and ecryptfs.
 
 ### Case
 
