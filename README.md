@@ -428,7 +428,7 @@ For instance in my case, bitcoind returned:
 1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP
 ```
 Messages signed with the private key associated to this address will now serve as proof of identity.
-Clearly, you can also import private keys from other wallet and use those for identity proof.
+Clearly, you can also import private keys from other wallets and use those for identity proof.
 
 ### Scripts for creating signatures
 Create a bin folder in t1000's home:
