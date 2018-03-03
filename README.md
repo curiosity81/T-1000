@@ -268,7 +268,6 @@ We will also install ecryptfs in the next section so that this directory is safe
 Create a new user as follows:
 ```
 sudo adduser t1000
-
 ```
 You only need to provide a password, the other information can be left empty.
 Also add this user to the sudoers group:
