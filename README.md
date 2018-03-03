@@ -328,7 +328,65 @@ cp /home/pi/Downloads /home/t1000 -Rf
 Also note, that ecryptfs will further slow down the device.
 
 ### Install firewall
-Bla fasel.
+Install [ufw](https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server):
+```
+sudo-apt-get install ufw
+```
+If you configured ufw wrongly, and if you are not able to log into the device again, then mount the sd card on you computer directly and edit the following file:
+```
+sudo nano /media/<user>/rootfs/etc/ufw/ufw.conf
+```
+And change the line which controls ufw to:
+```
+ENABLED=no
+```
+Exit nano via Ctrl+x and press y for accepting the change.
+If you have access to the device, then you can also reset ufw via:
+```
+sudo ufw reset
+```
+A working configuration looks as follows:
+```
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+```
+NOT WORKING YET:
+```
+sudo ufw default deny incoming
+sudo ufw default deny outgoing
+sudo ufw allow ssh
+```
+Let's close the bitcoin core ports, so that it has no connection to the outer world:
+```
+sudo ufw deny out 8333
+sudo ufw deny out 18333
+```
+Activate ufw:
+```
+sudo ufw enable
+```
+You can deactivate ufw via:
+```
+sudo ufw disable
+```
+Let's test bitcoin-qt.
+Log out:
+```
+exit
+```
+And log in again:
+```
+ssh t1000@raspberrypi.local -X
+```
+Start bitcoin-qt via:
+```
+/home/t1000/Downloads/bitcoin/src/qt/bitcoin-qt
+```
+Select the default location for the wallet and blockchain, which is:
+```
+/home/t1000/.bitcoin
+```
 
 ### Configure wallet
 Bla fasel.
