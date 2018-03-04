@@ -3,10 +3,10 @@
 ## Aim
 Build a message signing device so that:
 
-0. The device fits into a pocket.
-1. The total cost is around 1000 cent.
-2. The hard- and software is open source.
-3. The device is as secure as possible.
+1. The device fits into a pocket.
+2. The total cost is around 1000 cent.
+3. The hard- and software is open source.
+4. The device is as secure as possible.
 
 ## WARNING
 THIS DOCUMENT DOES NOT CLAIM TO BE COMPLETE!!! THIS IS ONLY A PROOF OF CONCEPT. ONLY STORE IMPORTANT DATA ON THE DEVICE IF YOU KNOW WHAT YOU ARE DOING.
@@ -33,21 +33,23 @@ Solutions to this problem:
 If the first point applies to you, that is you already own an hardware wallet, then you can stop reading here.
 The second point can clearly be a waste of energy, hardware and space, especially, if the second computer does not consist of specific hardware.
 This is where project T-1000 comes into play:
-Project T-1000 stands for "project Trezer0-1000", a simple open source and raspberry pi zero based Trezor alternative, small enough to fit into a pocket.
+
+T-1000 stands for **Trezer0-1000**, a simple open source and raspberry pi zero based Trezor alternative, small enough to fit into a pocket.
+
 Why using a rasperry pi zero?
 
-0. It is small and has roughly the size of an usb-stick.
-1. It is cheap and only costs around 5$.
-2. It is a stand-alone computer and thus, as flexible as possible with respect to software and additional hardware.
-3. Energy for the device and control over the device are provided via the same usb-connection.
+1. It is small and has roughly the size of an usb-stick.
+2. It is cheap and only costs around 5$.
+3. It is a stand-alone computer and thus, as flexible as possible with respect to software and additional hardware.
+4. Energy for the device and control over the device are provided via the same usb-connection.
 
 ## Material
-0. Ubuntu 16.04.03 LTS
-1. Raspberry pi zero
-2. Micro sd card
-3. Usb cable
-4. Time
-5. 3D-printer (optional)
+1. Ubuntu 16.04.03 LTS
+2. Raspberry pi zero
+3. Micro sd card
+4. Usb cable
+5. Time
+6. 3D-printer (optional)
 
 ## Methods
 
@@ -607,11 +609,11 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=37324
 https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
 
 ## Conclusion
-The device opened:
+Device opened:
 
 ![pic2](pic2.png)
 
-The device closed:
+Device closed:
 
 ![pic1](pic1.png)
 
