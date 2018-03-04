@@ -128,7 +128,10 @@ Leave the current directory:
 ```
 cd /home/<user>/Downloads
 ```
-Unmount the two file systems on the sd card by right clicking on the corresponding symbols on the unity bar on the left by selecting "Unmount".
+Unmount the two file systems on the sd card by right clicking on the corresponding symbols on the unity bar on the left by selecting "Unmount":
+
+![unmount](unmount.png)
+
 Insert the sd card into the raspberry pi zero.
 Insert the usb-cable into the micro usb port of the pi, which is closest to the middle.
 The device is now ready for its first boot up.
@@ -136,10 +139,15 @@ The device is now ready for its first boot up.
 ### Connect to raspberry pi zero
 Plug the device into an usb-port of your computer and wait around two minutes.
 Do a right click on the network manager:
+
 ![network_manager_1](network_manager_1.png)
-Some of the shown information will double there, but not in a reasoned way (a kind of ms-windows behavior ...).
+
+Some of the shown information will double there, but not in a reasoned way (a kind of MS-Windows behavior ...):
+
+![network_manager_2](network_manager_2.png)
+
 Since there is no configured connection to the raspberry pi zero yet, let's create one:
-Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings" (you can also give the new connection a meaningful name).
+Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings" (you can also give the new connection a meaningful name like "t1000").
 Now, there are two possible configurations under "Method" we will use:
 
 1. "Link-Local Only"
@@ -149,6 +157,10 @@ If the device is not allowed to have an internet connection, then select the fir
 This configuration is used later on, when the device is readily installed and configured.
 However, since Raspbian should be updated and additional software needs to be downloaded, we select the second possibility.
 Click "Save" and "Close" and Ubuntu will do the rest.
+The resulting network configuration should look similar to this:
+
+![network_manager_3](network_manager_3.png)
+
 In a terminal check:
 ```
 ifconfig
