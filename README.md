@@ -18,7 +18,7 @@ For instance, the person could publish a bitcoin address on the internet, for wh
 Messages signed with the private key can then be verified by others on the internet.
 To create such a signed message via bitcoin core is simple and can be done quickly using bitcoin-qt.
 In this case, the private key is stored in the wallet.dat file.
-But this method can be problematic so that the following points are extremly important:
+The following points are extremly important with respect to the private keys' security:
 
 1. The wallet MUST be encrypted.
 2. The home folder must be encrypted.
@@ -44,7 +44,7 @@ Why using a rasperry pi zero?
 4. Energy for the device and control over the device are provided via the same usb-connection.
 
 ## Material
-1. Ubuntu 16.04.03 LTS
+1. Ubuntu 16.04.03 LTS as desktop OS
 2. Raspberry pi zero
 3. Micro sd card
 4. Usb cable
@@ -54,7 +54,8 @@ Why using a rasperry pi zero?
 ## Methods
 
 ### Install Raspbian
-Enter the Download directory:
+Our starting point is Ubuntu as desktop OS.
+There, enter the Download directory:
 ```
 cd /home/<user>/Downloads
 ```
