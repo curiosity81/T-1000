@@ -607,4 +607,11 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=37324
 https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
 
 ## Conclusion
-Bla fasel
+The device opened:
+
+![pic2](pic2.png)
+
+The device closed:
+
+![pic1](pic1.png)
+
