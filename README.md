@@ -140,7 +140,7 @@ The device is now ready for its first boot up.
 
 ### Connect to raspberry pi zero
 Plug the device into an usb-port of your computer and wait around two minutes.
-Do a right click on the network manager:
+Do a right click on the network manager (I found no working command line based way to connect to the device):
 
 ![network_manager_1](network_manager_1.png)
 
