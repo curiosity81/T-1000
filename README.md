@@ -135,7 +135,8 @@ The device is now ready for its first boot up.
 
 ### Connect to raspberry pi zero
 Plug the device into an usb-port of your computer and wait around two minutes.
-Do a right click on the network manager (right top, close to, where the unity windows manager shows the time: the icon with one arrow up and one arrow down if you are connected to the internet).
+Do a right click on the network manager:
+![network_manager_1](network_manager_1.png)
 Some of the shown information will double there, but not in a reasoned way (a kind of ms-windows behavior ...).
 Since there is no configured connection to the raspberry pi zero yet, let's create one:
 Click on "Edit Connections..." -> "Add" -> "Ethernet" -> "Create" -> "IPv4 Settings" (you can also give the new connection a meaningful name).
