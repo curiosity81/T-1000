@@ -577,11 +577,20 @@ Note, that these commands will again take their time due to the light hardware o
 
 ### To Do
 Since the the sd card can be removed easily in general, the root partition can also be altered easily via mounting the sd card on a desktop computer.
-An attacker can prepare the root partition with malicious software which monitors the device since the installed software is fully known.
+An attacker can prepare the root partition with malicious software which then monitors the device.
+This is possible since the installed software and libraries are fully known.
 Thus, the root partition must be protected or tested for such alterations, either by:
 
-1. Encryption of the whole partition via cryptsetup.
-2. Some other method, which keeps track of altered files.
+1. Pragmatic solution via "seal":
+  1. Fix sd card with glue to device so that removal must become visible.
+  2. Lock case with glue so that opening and removal must break case.
+2. Encryption of the whole partition via cryptsetup (makes no sense, how to provide passphrase?).
+3. Method, which keeps track of altered files:
+  1. Loop over system folders via `sudo tar -cf - /<folder> | md5sum` and compare current hashes with old hashes.
+  2. [Separate partition for home folder](https://mike632t.wordpress.com/2014/02/10/resizing-partitions/), encrypted with ecryptfs, then simple comparison of `md5sum /dev/<system_partition>` with old hash saved on home folder.
+
+Method 3.2 seems useful.
+However, then it make sense to install Raspbian Lite instead of Raspbian due to smaller size (around 350 MB vs 4 GB).
 
 ### Case
 Download the 3D-model for the case [here](https://www.thingiverse.com/thing:1436545).
