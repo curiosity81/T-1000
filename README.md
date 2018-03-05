@@ -575,8 +575,15 @@ And you can cleanly shutdown the device from you desktop computer via:
 ```
 Note, that these commands will again take their time due to the light hardware of the raspberry pi zero combined with bitcoin core and ecryptfs.
 
-### Case
+### To Do
+Since the the sd card can be removed easily in general, the root partition can also be altered easily via mounting the sd card on a desktop computer.
+An attacker can prepare the root partition with malicious software which monitors the device since the installed software is fully known.
+Thus, the root partition must be protected or tested for such alterations, either by:
 
+1. Encryption of the whole partition via cryptsetup.
+2. Some other method, which keeps track of altered files.
+
+### Case
 Download the 3D-model for the case [here](https://www.thingiverse.com/thing:1436545).
 You can use the original model, but then the sd card can be removed from the device easily.
 An improved version can be derived using the 3D-modeling software [OpenScad](http://www.openscad.org/) (sudo apt-get install openscad) as follows.
