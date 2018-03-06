@@ -34,7 +34,14 @@ If the first point applies to you, that is you already own an hardware wallet, t
 The second point can clearly be a waste of energy, hardware and space, especially, if the second computer does not consist of specific hardware.
 This is where project T-1000 comes into play:
 
-T-1000 stands for **Trezer0-1000**, a simple open source and raspberry pi zero based Trezor alternative, small enough to fit into a pocket.
+T-1000 stands for **TINTE-1000**, a simple open source and raspberry pi zero based Trezor alternative, small enough to fit into a pocket.
+Where TINTE is a recursive acronym and may stand for:
+
+* TINTE Is Not (A) Trezor Emulator
+* TINTE Inks Nicely Text Emission
+* TINTE Initials Neatly Text Emission 
+* TINTE Is Not The Establishment
+* TINTE Is Nearly Technical Easy
 
 Why using a rasperry pi zero?
 
