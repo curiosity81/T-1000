@@ -582,8 +582,8 @@ This is possible since the installed software and libraries are fully known.
 Thus, the root partition must be protected or tested for such alterations, either by:
 
 1. Pragmatic solution via "seal":
-  * Fix sd card with glue to device so that removal must become visible.
-  * Lock case with glue so that opening and removal must break case.
+   * Fix sd card with glue to device so that removal must become visible.
+   * Lock case with glue so that opening and removal must break case.
 <!--
 2. Encryption of the whole partition via cryptsetup (makes no sense, how to provide passphrase?).
 3. Method, which keeps track of altered files:
