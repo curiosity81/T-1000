@@ -584,11 +584,10 @@ Thus, the root partition must be protected or tested for such alterations, eithe
 1. Pragmatic solution via "seal":
    1. Fix sd card with glue to device so that removal must become visible.
    2. Lock case with glue so that opening and removal must break case.
-<!--
 2. Encryption of the whole partition via cryptsetup (makes no sense, how to provide passphrase?).
 3. Method, which keeps track of altered files:
-  1. Loop over system folders via `sudo tar -cf - /<folder> | md5sum` and compare current hashes with old hashes.
-  2. [Separate partition for home folder](https://mike632t.wordpress.com/2014/02/10/resizing-partitions/), encrypted with ecryptfs, then simple comparison of `md5sum /dev/<system_partition>` with old hash saved on home folder.
+   1. Loop over system folders via `sudo tar -cf - /<folder> | md5sum` and compare current hashes with old hashes.
+   2. [Separate partition for home folder](https://mike632t.wordpress.com/2014/02/10/resizing-partitions/), encrypted with ecryptfs, then simple comparison of `md5sum /dev/<system_partition>` with old hash saved on home folder.
 
 After playing around with partitions and system directories, variant 3.2 is NO alternative anymore.
 There are three types of system directories (as far as I see it in the moment):
