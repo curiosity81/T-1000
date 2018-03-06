@@ -35,7 +35,7 @@ The second point can clearly be a waste of energy, hardware and space, especiall
 This is where project T-1000 comes into play:
 
 T-1000 stands for **TINTE-1000**, a simple open source and raspberry pi zero based Trezor alternative, small enough to fit into a pocket.
-Where TINTE is a recursive acronym and may stand for:
+TINTE is the german word for ink and may stand for:
 
 * TINTE Is Not (A) Trezor Emulator
 * TINTE Inks Nicely Text Emission
