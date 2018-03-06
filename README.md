@@ -614,7 +614,7 @@ There are three types of system directories (as far as I see it in the moment):
    * /run
    * /sys
 
-The /media- and /mnd-directory are empty unless some additional partition is mounted.
+The /media- and /mnt-directory are empty unless some additional partition is mounted.
 It is not clear yet, into which category the /run- and /sys-directory fall.
 The problem is, that variable directories cannot be transfered to a separate partition, since this did not work with /proc.
 The opposite is also not working, since /etc, containing the configuration files, especially /etc/fstab, needs to be accessible at boot up. 
