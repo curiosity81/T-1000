@@ -589,30 +589,30 @@ Thus, the root partition must be protected or tested for such alterations, eithe
    1. Loop over system folders via `sudo tar -cf - /<folder> | md5sum` and compare current hashes with old hashes.
    2. [Separate partition for home folder](https://mike632t.wordpress.com/2014/02/10/resizing-partitions/), encrypted with ecryptfs, then simple comparison of `md5sum /dev/<system_partition>` with old hash saved on home folder.
 
-After playing around with partitions and system directories, variant 3.2 is NO alternative anymore.
+After playing around with partitions and system directories, variant 3.ii is NO alternative anymore.
 There are three types of system directories (as far as I see it in the moment):
 
 1. Constant directories:
-  1. /bin
-  2. /boot
-  3. /etc
-  4. /lib
-  5. /opt
-  6. /root
-  7. /sbin
-  8. /srv
-  9. /usr
+   1. /bin
+   2. /boot
+   3. /etc
+   4. /lib
+   5. /opt
+   6. /root
+   7. /sbin
+   8. /srv
+   9. /usr
 2. Variable directories:
-  1. /dev
-  2. /home
-  3. /proc
-  4. /tmp
-  5. /var
+   1. /dev
+   2. /home
+   3. /proc
+   4. /tmp
+   5. /var
 3. Other directories:
-  1. /media
-  2. /mnt
-  3. /run
-  4. /sys
+   1. /media
+   2. /mnt
+   3. /run
+   4. /sys
 
 The /media- and /mnd-directory are empty unless some additional partition is mounted.
 It is not clear yet, into which category the /run- and /sys-directory fall.
