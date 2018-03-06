@@ -589,8 +589,47 @@ Thus, the root partition must be protected or tested for such alterations, eithe
   1. Loop over system folders via `sudo tar -cf - /<folder> | md5sum` and compare current hashes with old hashes.
   2. [Separate partition for home folder](https://mike632t.wordpress.com/2014/02/10/resizing-partitions/), encrypted with ecryptfs, then simple comparison of `md5sum /dev/<system_partition>` with old hash saved on home folder.
 
-Method 3.2 seems useful.
-However, then it make sense to install Raspbian Lite instead of Raspbian due to smaller size (around 350 MB vs 4 GB).
+After playing around with partitions and system directories, variant 3.2 is NO alternative anymore.
+There are three types of system directories (as far as I see it in the moment):
+
+1. Constant directories:
+  1. /bin
+  2. /boot
+  3. /etc
+  4. /lib
+  5. /opt
+  6. /root
+  7. /sbin
+  8. /srv
+  9. /usr
+2. Variable directories:
+  1. /dev
+  2. /home
+  3. /proc
+  4. /tmp
+  5. /var
+3. Other directories:
+  1. /media
+  2. /mnt
+  3. /run
+  4. /sys
+
+The /media- and /mnd-directory are empty unless some additional partition is mounted.
+It is not clear yet, into which category the /run- and /sys-directory fall.
+The problem is, that variable directories cannot be transfered to a separate partition, since this did not work with /proc.
+The opposite is also not working, since /etc, containing the configuration files, especially /etc/fstab, needs to be accessible at boot up. 
+Thus, only method 3.1 remains.
+Luckily, one can lump together all constant directories as follows:
+```
+#!/bin/bash
+tar -cf - /bin /boot /etc /lib /opt /root /sbin /srv /usr | md5sum
+```
+Such a script must be run with root privileges.
+After installation of the system, this script is run.
+The resulting hash is saved in the encrypted home-folder.
+This hash can then be checked against the current hash sum of the constant system directories.
+For this approach, it make sense to install Raspbian-Lite instead of Raspbian due to smaller size (around 350 MB vs 4 GB).
+Computing the hash sum (one can also use sha256sum or sha512sum) takes around 80 seconds on a fresh installed Raspbian-Lite system.
 
 ### Case
 Download the 3D-model for the case [here](https://www.thingiverse.com/thing:1436545).
