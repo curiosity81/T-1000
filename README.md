@@ -593,26 +593,26 @@ After playing around with partitions and system directories, variant 3.ii is NO 
 There are three types of system directories (as far as I see it in the moment):
 
 1. Constant directories:
-   1. /bin
-   2. /boot
-   3. /etc
-   4. /lib
-   5. /opt
-   6. /root
-   7. /sbin
-   8. /srv
-   9. /usr
+   * /bin
+   * /boot
+   * /etc
+   * /lib
+   * /opt
+   * /root
+   * /sbin
+   * /srv
+   * /usr
 2. Variable directories:
-   1. /dev
-   2. /home
-   3. /proc
-   4. /tmp
-   5. /var
+   * /dev
+   * /home
+   * /proc
+   * /tmp
+   * /var
 3. Other directories:
-   1. /media
-   2. /mnt
-   3. /run
-   4. /sys
+   * /media
+   * /mnt
+   * /run
+   * /sys
 
 The /media- and /mnd-directory are empty unless some additional partition is mounted.
 It is not clear yet, into which category the /run- and /sys-directory fall.
