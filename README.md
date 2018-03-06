@@ -617,20 +617,19 @@ There are three types of system directories (as far as I see it in the moment):
 The /media- and /mnt-directory are empty unless some additional partition is mounted.
 It is not clear yet, into which category the /run- and /sys-directory fall.
 The problem is, that variable directories cannot be transfered to a separate partition, since this did not work with /proc.
-The opposite is also not working, since /etc, containing the configuration files, especially /etc/fstab, needs to be accessible at boot up. 
-Thus, only method 3.1 remains.
+The opposite is also not working, since /etc, which contains the configuration files (e.g. /etc/fstab) needs to be accessible at boot up. 
+Thus, only method 3.i remains.
 Luckily, one can lump together all constant directories as follows:
 ```
 #!/bin/bash
 tar -cf - /bin /boot /etc /lib /opt /root /sbin /srv /usr | md5sum
 ```
 Such a script must be run with root privileges.
-After installation of the system, this script is run.
-The resulting hash is saved in the encrypted home-folder.
-This hash can then be checked against the current hash sum of the constant system directories.
-For this approach, it make sense to install Raspbian-Lite instead of Raspbian due to smaller size (around 350 MB vs 4 GB).
+After installation of the system, the script is run for computing the hash of the unaltered system.
+The resulting hash is saved in the encrypted home-folder and can later on be checked against the current hash sum of the constant system directories.
+For this approach, it make sense to install Raspbian-Lite instead of Raspbian due to smaller size (around 350 MB vs 4 GB of the zip file).
 Computing the hash sum (one can also use sha256sum or sha512sum) takes around 80 seconds on a fresh installed Raspbian-Lite system.
--->
+
 ### Case
 Download the 3D-model for the case [here](https://www.thingiverse.com/thing:1436545).
 You can use the original model, but then the sd card can be removed from the device easily.
