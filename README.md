@@ -372,7 +372,8 @@ Install [ufw](https://www.digitalocean.com/community/tutorials/how-to-setup-a-fi
 ```
 sudo-apt-get install ufw
 ```
-If you configured ufw wrongly, and if you are not able to log into the device again, then mount the sd card on you computer directly and edit the following file:
+FIRSTLY, THE MOST IMPORTANT ABOUT THIS SECTION:
+If you configure ufw wrongly, and if you are not able to log into the device again, then mount the sd card on you computer directly and edit the following file:
 ```
 sudo nano /media/<user>/rootfs/etc/ufw/ufw.conf
 ```
