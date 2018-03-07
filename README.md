@@ -232,7 +232,7 @@ And after relogin check the swap:
 top
 ```
 Exit top via Ctrl+c.
-Now update Raspbian (if there are problems with logging into the device again, see the end of paragraph "Connect to raspberry pi zero"):
+Now update Raspbian (if there are problems with logging into the device again, see the end of section "Connect to raspberry pi zero"):
 ```
 sudo apt-get update
 ```
@@ -240,7 +240,7 @@ Followed by
 ```
 sudo apt-get dist-upgrade
 ```
-The upgrade procedure will now take some time, grab a coffee, a beer or a glass of wine and do something else in the meantime.
+The upgrade procedure will now take some time.
 
 ### Compile bitcoin core
 Firstly, make sure, which cpu is running the device:
