@@ -70,6 +70,11 @@ Download the current version of [Raspbian](https://www.raspberrypi.org/downloads
 ```
 wget https://downloads.raspberrypi.org/raspbian_latest
 ```
+(Alternatively, you can also download Raspbian-lite whose file size is smaller:
+```
+wget https://downloads.raspberrypi.org/raspbian_lite_latest
+```
+Clearly, you have to adapt the commands in the following.)
 This will save a file with the name "raspbian_latest", which represents a zip-archive.
 Rename it:
 ```
@@ -191,7 +196,7 @@ After logging into the device, do:
 sudo raspi-config
 ```
 You can browse the [raspi-confi](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) menu via arrow, tab and return keys.
-Choose "Expand file system" so that the device will use all of the sd card's memory.
+Choose "Advanced Options" -> "Expand file system" so that the device will use all of the sd card's memory.
 This change will apply after reboot.
 Also set the "Localisation options":
 
@@ -204,24 +209,7 @@ Then reboot:
 ```
 sudo shutdown -r now
 ```
-After reboot update Raspbian (if there are problems with logging into the device again, see the end of paragraph "Connect to raspberry pi zero"):
-```
-sudo apt-get update
-```
-Followed by
-```
-sudo apt-get dist-upgrade
-```
-The upgrade procedure will now take some time, grab a coffee, a beer or a glass of wine and do something else in the meantime.
-
-### Compile bitcoin core
-Firstly, make sure, which cpu is running the device:
-```
-cat /proc/cpuinfo
-```
-My raspberry pi zero is run by an "ARMv6-compatible processor rev 7 (v6l)" so that the bitcoin core binaries won't work.
-Thus, we have to [compile](http://raspnode.com/diyBitcoin.html) the software by ourselves.
-Secondly, we need much more memory, than the 512 MB the device provides since otherwise compiling will take forever:
+After reboot increase swap since we need more memory:
 ```
 sudo nano /etc/dphys-swapfile
 ```
@@ -242,15 +230,45 @@ sudo shutdown -r now
 And after relogin check the swap:
 ```
 top
-``` 
+```
 Exit top via Ctrl+c.
-Thirdly, we need additional packages:
+Now update Raspbian (if there are problems with logging into the device again, see the end of paragraph "Connect to raspberry pi zero"):
 ```
-sudo apt-get install autoconf libevent-dev libtool libssl-dev libboost-all-dev libminiupnpc-dev git t4-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev
+sudo apt-get update
 ```
-Fourthly, we need Berkeley-DB 4.8, so we have to compile this too:
+Followed by
+```
+sudo apt-get dist-upgrade
+```
+The upgrade procedure will now take some time, grab a coffee, a beer or a glass of wine and do something else in the meantime.
+
+### Compile bitcoin core
+Firstly, make sure, which cpu is running the device:
+```
+cat /proc/cpuinfo
+```
+My raspberry pi zero is run by an "ARMv6-compatible processor rev 7 (v6l)" so that the bitcoin core binaries won't work.
+Thus, we have to [compile](http://raspnode.com/diyBitcoin.html) the software by ourselves.
+Secondly, we need additional packages:
+```
+sudo apt-get install autoconf libevent-dev libtool libssl-dev libboost-all-dev libminiupnpc-dev git libprotobuf-dev protobuf-compiler libqrencode-dev
+```
+If a package is missing, remove it from the list above.
+(If you have installed Raspbian-lite you need additional packages:
+```
+sudo apt-get install libboost-chrono-dev libboost-date-time-dev libboost-filesystem-dev libboost-program-options-dev libboost-serialization-dev libboost-system-dev libboost-thread-dev libboost-dev libminiupnpc-dev git qt4-qmake libqt4-dev build-essential qt4-linguist-tools libssl-dev
+```
+But maybe, not all of the packages from above are needed or are already installed.)
+Thirdly, we need Berkeley-DB 4.8, so we have to compile this too:
 ```
 cd /home/pi/Downloads
+```
+If there exists no Downloads-directory, then simply create one:
+```
+mkdir /home/pi/Downloads
+```
+Now, build Berkeley-DB 4.8:
+```
 wget wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 echo "12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef db-4.8.30.NC.tar.gz" | sha256sum -c
 tar -xzvf db-4.8.30.NC.tar.gz
