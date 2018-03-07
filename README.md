@@ -655,8 +655,8 @@ Tar keeps also track of file privileges and dates.
 This script must be run via sudo.
 After installation of the system, the script computes the hash of the unaltered system.
 The resulting hash is saved in the encrypted home-folder and can later on be checked against the current hash sum of the constant system directories.
-For this approach, it make sense to install Raspbian-Lite instead of Raspbian due to smaller size (around 350 MB vs 1.8 GB of the zip file).
-Computing the hash sum (one can also use sha256sum or sha512sum) takes around 80 seconds on a fresh installed Raspbian-Lite system.
+For this approach, it makes sense to install Raspbian-lite instead of Raspbian due to smaller size (around 350 MB vs 1.8 GB of the zip file).
+Computing the hash sum (one can also use sha256sum or sha512sum) takes around 80 seconds on a fresh installed Raspbian-lite system.
 
 ### Case
 Download the 3D-model for the case [here](https://www.thingiverse.com/thing:1436545).
