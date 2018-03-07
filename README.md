@@ -253,7 +253,6 @@ Secondly, we need additional packages:
 ```
 sudo apt-get install autoconf libevent-dev libtool libssl-dev libboost-all-dev libminiupnpc-dev git libprotobuf-dev protobuf-compiler libqrencode-dev
 ```
-If a package is missing, remove it from the list above.
 (If you have installed Raspbian-lite you need additional packages:
 ```
 sudo apt-get install libboost-chrono-dev libboost-date-time-dev libboost-filesystem-dev libboost-program-options-dev libboost-serialization-dev libboost-system-dev libboost-thread-dev libboost-dev libminiupnpc-dev git qt4-qmake libqt4-dev build-essential qt4-linguist-tools libssl-dev
