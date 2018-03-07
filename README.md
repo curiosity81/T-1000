@@ -591,7 +591,7 @@ You can now sign messages from your desktop computer via:
 ```
 /home/<user>/bin/t1000.sh "sign" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "hello world"
 ```
-You can verify message from your desktop computer via:
+You can verify messages from your desktop computer via:
 ```
 /home/<user>/bin/t1000.sh "verify" "1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP" "ICEfpWSTZsmlqW38kZTaYuhub4jY+V9K9Dsv13LSEk5EFLWfbKr3zQtpgxL22kSEiXKQRp+Mb/rINtzFsBMXGVo=" "hello world"
 ```
