@@ -257,7 +257,7 @@ sudo apt-get install autoconf libevent-dev libtool libssl-dev libboost-all-dev l
 ```
 sudo apt-get install libboost-chrono-dev libboost-date-time-dev libboost-filesystem-dev libboost-program-options-dev libboost-serialization-dev libboost-system-dev libboost-thread-dev libboost-dev libminiupnpc-dev git qt4-qmake libqt4-dev build-essential qt4-linguist-tools libssl-dev
 ```
-But maybe, not all of the packages from above are needed or are already installed.)
+Likely, not all of the packages from above are needed or are already installed.)
 Thirdly, we need Berkeley-DB 4.8, so we have to compile this too:
 ```
 cd /home/pi/Downloads
@@ -265,6 +265,7 @@ cd /home/pi/Downloads
 If there exists no Downloads-directory, then simply create one:
 ```
 mkdir /home/pi/Downloads
+cd /home/pi/Downloads
 ```
 Now, build Berkeley-DB 4.8:
 ```
