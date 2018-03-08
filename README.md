@@ -694,6 +694,43 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=37324
 https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
 
 ## Conclusion
+### General
+Using a raspberry pi zero for signing messages with bitcoin core is possible even though bitcoin core provides a much higher functionality.
+For a pure message signing device, lighter software solutions might be more suitable.
+Especially, since reimplementing the signing procedure should be not too difficult.
+However, bitcoin core already handles a wallet conveniently and is well tested, also with respect to the security of the private keys.
+Moreover, since bitcoin core IS Bitcoin, the device can be extended to a real hardware wallet even though the blockchain must then be handled somehow.
+
+### Software
+Building bitcoin core from source code on the device takes ages.
+In future, there will be an archive containing the whole bitcoin folder with precompiled binaries.
+There also will be a file containing the corresponding sha*sums, signed with the private key associated to the address:
+```
+1FL4TwFWvhQ9kbjXMtcsupupwcRk61Y6YP
+```
+The archive simply represents the state of the bitcoin-folder after the make command finishes.
+The binaries can then be executed locally as described in previous sections.
+Maybe other coins will follow.
+
+### Security
+With an encrypted wallet as well as an encrypted home-folder, the private keys should be protected against attackers when the device is switched off.
+However, since the sd card could be altered via removal it sould also be secured, that the device, if running, has NO connection to the internet.
+This can be accomplished via:
+
+1. Usage of a "Link-Local Only"-connection to the desktop computer;
+2. A firewall configuration that only allows ssh connections (not fully solved yet).
+
+Finally, one should monitor alterations of files on the device.
+Under the assumption, that files cannot be altered from "within", i.e., only the owner is able to log into the installed Raspbian, the simplest solution is to seal the sd card.
+For instance, the sd card can be glued to the device so that the sd card's removal will break the glue.
+Moreover, if the device is added to a person's bunch of keys, the device is virtually always under control of the owner.
+Also system files can be monitored, but this seems only possible with a deep understanding of Raspbian's system files.
+This might be solved via a live system.
+However, building a working live system for a raspberry pi zero is nontrivial and would represent an additional project. 
+
+### Pictures
+The case in the following images is the original design from [here](https://www.thingiverse.com/thing:1436545) and NOT the one with the protected sd card.
+More pictures will follow.
 Device opened:
 
 ![pic2](pic2.png)
