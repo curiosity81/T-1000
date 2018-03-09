@@ -188,7 +188,8 @@ ssh pi@raspberrypi.local
 Password is "raspberry" by default.
 Note, that Ubuntu seems to have problems to select the correct ethernet connection after its reboot.
 That is, Ubuntu mixes up the internet connection with the newly created raspberry pi zero connection.  
-Therefore, delete an old raspberry pi zero connection before you insert the device into the usb-port of your computer and then follow the steps of this paragraph from the beginning.
+Therefore, delete an old raspberry pi zero connection before you shut down or shortly after you rebooted your desktop computer and before you insert the device into the the desktop computer's usb-port.
+Then follow the steps of this section from the beginning, it's only seven mouse clicks.
 
 ### Configure raspberry pi zero
 After logging into the device, do:
