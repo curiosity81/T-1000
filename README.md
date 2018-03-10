@@ -377,7 +377,7 @@ Also note, that ecryptfs will further slow down the device.
 ### Install firewall
 Install [ufw](https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server):
 ```
-sudo-apt-get install ufw
+sudo apt-get install ufw
 ```
 FIRSTLY, THE MOST IMPORTANT ABOUT THIS SECTION:
 If you configure ufw wrongly, and if you are not able to log into the device again, then mount the sd card on you computer directly and edit the following file:
@@ -439,7 +439,9 @@ To make this permanent, add the line from above to /home/t1000/.bashrc:
 ```
 nano /home/t1000/.bashrc
 ```
-Exit nano via Ctrl+x and press y for accepting the change.)
+Exit nano via Ctrl+x and press y for accepting the change.
+However, this won't work, if bitcoin binaries are executed via ssh.
+Therefore, the export must be added to the corresponding scripts.)
 Select the default location for the wallet and blockchain, which is:
 ```
 /home/t1000/.bitcoin
@@ -499,6 +501,8 @@ nano /home/t1000/bin/signmessage.sh
 And fill the file with the following code:
 ```
 #!/bin/bash
+# The following line is only necessary, if Berkley DB 4.8 was installed locally
+#export LD_LIBRARY_PATH="/home/t1000/Downloads/db-4.8/lib"
 
 # start bitcoind and wait five seconds
 /home/t1000/Downloads/bitcoin/src/bitcoind & 
@@ -547,6 +551,8 @@ nano /home/t1000/bin/verifymessage.sh
 And fill the file with the following code:
 ```
 #!/bin/bash
+# The following line is only necessary, if Berkley DB 4.8 was installed locally
+#export LD_LIBRARY_PATH="/home/t1000/Downloads/db-4.8/lib"
 
 # start bitcoind and wait five seconds
 /home/t1000/Downloads/bitcoin/src/bitcoind & 
