@@ -431,6 +431,15 @@ Start bitcoin-qt via:
 ```
 /home/t1000/Downloads/bitcoin/src/qt/bitcoin-qt
 ```
+(If you installed Berkeley-DB 4.8 locally, then you must specify the corresponding library directory:
+```
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/t1000/Downloads/db-4.8/lib"
+```
+To make this permanent, add the line from above to /home/t1000/.bashrc:
+```
+nano /home/t1000/.bashrc
+```
+Exit nano via Ctrl+x and press y for accepting the change.)
 Select the default location for the wallet and blockchain, which is:
 ```
 /home/t1000/.bitcoin
