@@ -501,7 +501,7 @@ nano /home/t1000/bin/signmessage.sh
 And fill the file with the following code:
 ```
 #!/bin/bash
-# The following line is only necessary, if Berkley DB 4.8 was installed locally
+# The following line is only necessary, if Berkley-DB 4.8 was installed locally
 #export LD_LIBRARY_PATH="/home/t1000/Downloads/db-4.8/lib"
 
 # start bitcoind and wait five seconds
@@ -551,7 +551,7 @@ nano /home/t1000/bin/verifymessage.sh
 And fill the file with the following code:
 ```
 #!/bin/bash
-# The following line is only necessary, if Berkley DB 4.8 was installed locally
+# The following line is only necessary, if Berkley-DB 4.8 was installed locally
 #export LD_LIBRARY_PATH="/home/t1000/Downloads/db-4.8/lib"
 
 # start bitcoind and wait five seconds
