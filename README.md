@@ -343,6 +343,12 @@ And log in again as user t1000 with the corresponding password:
 ```
 ssh t1000@raspberrypi.local
 ```
+Copy the following files:
+```
+cp /etc/skel/.bashrc /home/t1000
+cp /etc/skel/.bash_logout /home/t1000
+cp /etc/skel/.profile /home/t1000
+```
 Now reboot:
 ```
 sudo shutdown -r now
