@@ -667,7 +667,7 @@ There are three types of system directories (as far as I see it in the moment):
    * /run
    * /sys
 
-If all "constant" directories stay the same after reboot is still untested.
+The file /etc/fake-hwclock.data changes each boot up and must therefore be excluded.
 Variable directories cannot be transfered to a separate partition, since this did not work with /proc.
 The opposite is also not working, since /etc, which contains the configuration files (e.g. /etc/fstab) needs to be accessible at boot up.
 The /media- and /mnt-directory are empty unless some additional partition is mounted.
@@ -684,7 +684,7 @@ Fill the file with the following code:
 # for finding altered files
 #find <dir> -printf "%T@ %Tc %p\n" | sort -n
 
-# lump all directories, which should stay constant, together
+# lump all directories together, which should stay constant
 # exclude /etc/fake-hwclock.data since this file is update each boot up
 current_hash=$(tar --exclude="/etc/fake-hwclock.data" -cf - /etc/* /bin /boot /lib /opt /root /sbin /srv /usr 2> /dev/null | sha256sum  | cut -d " " -f 1);
 
