@@ -604,6 +604,11 @@ if [[ "$1" == "shutdown" ]];
 then
    ssh -t t1000@raspberrypi.local "sudo shutdown -h now"
 fi
+
+if [[ "$1" == "test" ]];
+then
+   ssh -t t1000@raspberrypi.local "sudo /home/t1000/bin/testhash.sh"
+fi
 ```
 Change the permissions again:
 ```
@@ -670,15 +675,37 @@ It is not clear yet, into which category the /run- and /sys-directory fall.
 Thus, only method 3.i remains.
 Luckily, one can lump together all constant directories as follows:
 ```
+nano /home/t1000/bin/testhash.sh
+```
+Fill the file with the following code:
+```
 #!/bin/bash
-tar -cf - /bin /boot /etc /lib /opt /root /sbin /srv /usr | md5sum
+
+# for finding altered files
+#find <dir> -printf "%T@ %Tc %p\n" | sort -n
+
+# lump all directories, which should stay constant, together
+# exclude /etc/fake-hwclock.data since this file is update each boot up
+current_hash=$(tar --exclude="/etc/fake-hwclock.data" -cf - /etc/* /bin /boot /lib /opt /root /sbin /srv /usr 2> /dev/null | sha256sum  | cut -d " " -f 1);
+
+saved_hash=$(cat /home/t1000/bin/sha256sum.txt);
+
+echo "$current_hash";
+echo "$saved_hash";
+```
+Change permissions again:
+```
+chmod 700 /home/t1000/bin/testhash.sh
 ```
 Tar keeps also track of file privileges and dates.
 This script must be run via sudo.
-After installation of the system, the script computes the hash of the unaltered system.
-The resulting hash is saved in the encrypted home-folder and can later on be checked against the current hash sum of the constant system directories.
+After installation of the system, also compute the hash of the unaltered system and save it in file /home/t1000/bin/sha256sum.txt:
+```
+tar --exclude="/etc/fake-hwclock.data" -cf - /etc/* /bin /boot /lib /opt /root /sbin /srv /usr 2> /dev/null | sha256sum  | cut -d " " -f 1 > /home/t1000/bin/sha256sum.txt
+```
+The resulting hash is saved in the encrypted home-folder and can later on be checked with /home/t1000/bin/testhash.sh against the current hash sum of the constant system directories.
 For this approach, it makes sense to install Raspbian-lite instead of Raspbian due to smaller size (around 350 MB vs 1.8 GB of the zip file).
-Computing the hash sum (one can also use sha256sum or sha512sum) takes around 80 seconds on a fresh installed Raspbian-lite system.
+Computing the hash sum (one can also use sha256sum or sha512sum) takes around two minutes.
 We can use the already installed and unprotected hashsum-binary, since an attacker does not know, which hash is saved in the encrypted home-folder.
 That is, even in the case of a manipulated hashsum-binary, we should be able to detect manipulations.
 
