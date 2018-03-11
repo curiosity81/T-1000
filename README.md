@@ -667,7 +667,6 @@ There are three types of system directories (as far as I see it in the moment):
    * /run
    * /sys
 
-The file /etc/fake-hwclock.data changes each boot up and must therefore be excluded.
 Variable directories cannot be transfered to a separate partition, since this did not work with /proc.
 The opposite is also not working, since /etc, which contains the configuration files (e.g. /etc/fstab) needs to be accessible at boot up.
 The /media- and /mnt-directory are empty unless some additional partition is mounted.
@@ -685,7 +684,7 @@ Fill the file with the following code:
 #find <dir> -printf "%T@ %Tc %p\n" | sort -n
 
 # lump all directories together, which should stay constant
-# exclude /etc/fake-hwclock.data since this file is update each boot up
+# exclude /etc/fake-hwclock.data since this file is updated each boot up
 current_hash=$(tar --exclude="/etc/fake-hwclock.data" -cf - /etc/* /bin /boot /lib /opt /root /sbin /srv /usr 2> /dev/null | sha256sum  | cut -d " " -f 1);
 
 saved_hash=$(cat /home/t1000/bin/sha256sum.txt);
@@ -693,6 +692,7 @@ saved_hash=$(cat /home/t1000/bin/sha256sum.txt);
 echo "$current_hash";
 echo "$saved_hash";
 ```
+The file /etc/fake-hwclock.data changes each boot up and must therefore be excluded.
 Change permissions again:
 ```
 chmod 700 /home/t1000/bin/testhash.sh
